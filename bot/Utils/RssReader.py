@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from time import mktime
 
 
-class RssReader:
+class RssReader(object):
     def __init__(self, url, parse_now=True):
         self.url = url
         self.feed = None

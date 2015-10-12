@@ -3,7 +3,7 @@ import telegram
 from . import Configs
 
 
-class BotManager():
+class BotManager(object):
     token = Configs.Server.TELEGRAM_TOKEN
 
     def __init__(self):
