@@ -1,0 +1,4 @@
+Flask>=0.10.1
+peewee>=2.6.4
+python-telegram-bot>=2.8.7
+feedparser>=5.2.1
