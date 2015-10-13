@@ -22,6 +22,13 @@ class Clients(BaseModel):
         db_table = Configs.DB.TABLE
 
 
+def create_table():
+    try:
+        create_model_tables(Clients)
+    except:
+        return
+
+
 def store(chatid, lastcheck, registered=True, retry=5):
     if retry < 0:
         return -2
