@@ -43,11 +43,10 @@ class Server(object):
     """This object represents Server configurations"""
 
     # The server address
-    # Should end with backslash `/`
-    SERVER_ADDRESS = 'https://bot.server.com/'
+    SERVER_ADDRESS = 'https://bot.server.com'
 
     # The web-hook address
-    WEB_HOOK_ADDRESS = 'web_hook/'
+    WEB_HOOK_ADDRESS = '/web_hook'
 
     # Your Bot secret token.
     TELEGRAM_TOKEN = 'Very Secret Token!'

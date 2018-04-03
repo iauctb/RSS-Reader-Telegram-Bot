@@ -1,30 +1,26 @@
-from flask import Flask, request
-from Utils import BotManager, DB, Configs
-from datetime import datetime, timedelta
+from flask import Flask, request, make_response
+from utils import BotManager, DB, Configs
+from datetime import datetime
 
 app = Flask(__name__)
 
+# Create a new instance of Telegram bot
 bot = BotManager.BotManager()
 
-
-@app.route('/set_webhook')
-def index():
-    """This will set the bot web-hook. Should be called once."""
-
-    bot.set_webhook()
-    return "done"
+# Set webhook address
+bot.set_webhook()
 
 
-@app.route('/web_hook', methods=["POST"])
+@app.route(Configs.Server.WEB_HOOK_ADDRESS, methods=["POST"])
 def web_hook():
     """Telegram will send new messages to this web-hook"""
 
     # Translate POST request data to JSON format.
     j = request.json
-    update = BotManager.BotManager.json_to_update(j)
+    update = bot.json_to_update(j)
 
     if not update.message.text:
-        return "bad request"
+        return "invalid_message"
 
     # If the request is `start` command.
     if update.message.text.lower() in ["/start", "/start@sample_bot"]:
@@ -48,6 +44,7 @@ def web_hook():
 
     # The request was processed successfully.
     return "ok"
+
 
 if __name__ == '__main__':
     app.run()
