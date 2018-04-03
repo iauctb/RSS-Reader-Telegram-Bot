@@ -1,5 +1,6 @@
 from peewee import *
 from . import Configs
+from time import time
 
 # Instance of the database (MySQL)
 db = MySQLDatabase(
@@ -22,7 +23,7 @@ class BaseModel(Model):
 # Bot clients model
 class Client(BaseModel):
     chat_id = CharField(unique=True)
-    last_checked_time = DateTimeField()
+    last_checked_time = TimestampField()
     is_registered = BooleanField()
 
     class Meta:
@@ -35,4 +36,17 @@ def init():
     db.connect()
     # Create tables if they don't exist
     db.create_tables([Client])
+
+
+# Add new client
+def add_client(chat_id):
+    try:
+        client = Client.get(Client.chat_id == chat_id)
+        client.last_checked_time = time()
+        client.is_registered = True
+    except DoesNotExist:
+        client = Client(chat_id=chat_id, last_checked_time=time(), is_registered=True)
+    client.save()
+    return client
+
 

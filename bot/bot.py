@@ -1,6 +1,5 @@
 from flask import Flask, request, make_response
 from utils import BotManager, DB, Configs
-from datetime import datetime
 
 app = Flask(__name__)
 
@@ -28,8 +27,7 @@ def web_hook():
     # If the request is `start` command.
     if update.message.text.lower() in ["/start", "/start@sample_bot"]:
         chat_id = update.message.chat_id
-        d = DB
-        d.store(str(chat_id), datetime.now().date())
+        DB.add_client(chat_id)
         bot.send_message(update.message.chat_id, Configs.Message.START_TEXT)
 
     # If the request is `help` command.
