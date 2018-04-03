@@ -46,13 +46,13 @@ class Server(object):
     """This object represents Server configurations"""
 
     # The server address
-    SERVER_ADDRESS = 'https://73db683e.ngrok.io'
+    SERVER_ADDRESS = 'https://bot.server.com'
 
     # The web-hook address
     WEB_HOOK_ADDRESS = '/web_hook'
 
     # Your Bot secret token.
-    TELEGRAM_TOKEN = 'secret-token'
+    TELEGRAM_TOKEN = 'secret-pass'
 
 
 class CRON(object):
