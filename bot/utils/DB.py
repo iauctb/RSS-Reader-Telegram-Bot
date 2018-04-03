@@ -62,3 +62,13 @@ def switch_registration(chat_id):
     except DoesNotExist:
         client = None
     return client
+
+
+# Get list of registered clients
+def get_registered_clients():
+    clients = Client.select().where(Client.is_registered)
+    return clients
+
+
+def update_client_last_checked_time(chat_id):
+    Client.update(last_checked_time=time()).where(Client.chat_id == chat_id).execute()
