@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response
+from flask import Flask, request
 from utils import BotManager, DB, Configs
 
 app = Flask(__name__)

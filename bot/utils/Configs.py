@@ -53,3 +53,10 @@ class Server(object):
 
     # Your Bot secret token.
     TELEGRAM_TOKEN = 'secret-token'
+
+
+class CRON(object):
+    """This object represents CRON configurations"""
+
+    # Intervals to check feed, in Seconds
+    CHECK_INTERVALS = 60
