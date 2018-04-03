@@ -29,7 +29,7 @@ class DB(object):
     PASSWORD = ''
 
     # The table which the clients data will be stored.
-    TABLE = 'clients'
+    CLIENTS_TABLE = 'clients'
 
 
 class RSS(object):
