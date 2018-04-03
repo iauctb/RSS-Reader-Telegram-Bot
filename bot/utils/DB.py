@@ -42,7 +42,6 @@ def init():
 def add_client(chat_id):
     try:
         client = Client.get(Client.chat_id == chat_id)
-        client.last_checked_time = time()
         client.is_registered = True
     except DoesNotExist:
         client = Client(chat_id=chat_id, last_checked_time=time(), is_registered=True)
@@ -50,3 +49,16 @@ def add_client(chat_id):
     return client
 
 
+# Switch registration of the client
+def switch_registration(chat_id):
+    try:
+        client = Client.get(Client.chat_id == chat_id)
+        if client.is_registered:
+            client.is_registered = False
+        else:
+            client.is_registered = True
+            client.last_checked_time = time()
+        client.save()
+    except DoesNotExist:
+        client = None
+    return client
