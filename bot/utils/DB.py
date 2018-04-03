@@ -19,3 +19,8 @@ class Client(BaseModel):
 
     class Meta:
         table_name = Configs.DB.CLIENTS_TABLE
+
+
+def init():
+    db.connect()
+

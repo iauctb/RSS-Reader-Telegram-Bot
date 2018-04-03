@@ -4,6 +4,9 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+# Initialize database connection
+DB.init()
+
 # Create a new instance of Telegram bot
 bot = BotManager.BotManager()
 

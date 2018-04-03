@@ -2,3 +2,4 @@ Flask==0.12.2
 peewee==3.2.2
 python-telegram-bot==10.0.1
 feedparser==5.2.1
+PyMySQL==0.8.0
