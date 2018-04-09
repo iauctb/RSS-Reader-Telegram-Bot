@@ -1,7 +1,7 @@
 """This module contains configuration objects."""
 
 
-class Message(object):
+class Messages(object):
     """This object represents a Message."""
 
     START_TEXT = """
@@ -12,9 +12,12 @@ class Message(object):
     HELP_TEXT = """
     This is a sample Bot.
     This Bot will send news for you.
-    You can unregister by using /unregister command.
+    You can un-register or re-register by using /switchreg command.
     """
 
+    SWITCH_REGISTRATION_TEXT = """
+    Your registration switched successfully
+    """
     # Add your custom messages here.
 
 
@@ -26,10 +29,10 @@ class DB(object):
     HOST = '127.0.0.1'
     PORT = 3306
     USER = 'root'
-    PASSWORD = ''
+    PASSWORD = 'secret-pass'
 
     # The table which the clients data will be stored.
-    TABLE = 'clients'
+    CLIENTS_TABLE = 'clients'
 
 
 class RSS(object):
@@ -43,11 +46,17 @@ class Server(object):
     """This object represents Server configurations"""
 
     # The server address
-    # Should end with backslash `/`
-    SERVER_ADDRESS = 'https://bot.server.com/'
+    SERVER_ADDRESS = 'https://bot.server.com'
 
     # The web-hook address
-    WEB_HOOK_ADDRESS = 'web_hook/'
+    WEB_HOOK_ADDRESS = '/web_hook'
 
     # Your Bot secret token.
-    TELEGRAM_TOKEN = 'Very Secret Token!'
+    TELEGRAM_TOKEN = 'secret-pass'
+
+
+class CRON(object):
+    """This object represents CRON configurations"""
+
+    # Intervals to check feed, in Seconds
+    CHECK_INTERVALS = 60

@@ -9,9 +9,8 @@ class BotManager(object):
     def __init__(self):
         self.bot = telegram.Bot(token=self.token)
 
-    @staticmethod
-    def json_to_update(j):
-        return telegram.Update.de_json(j)
+    def json_to_update(self, j):
+        return telegram.Update.de_json(data=j, bot=self.bot)
 
     def set_webhook(self):
         self.bot.setWebhook(Configs.Server.SERVER_ADDRESS + Configs.Server.WEB_HOOK_ADDRESS)
